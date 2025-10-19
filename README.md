@@ -19,24 +19,40 @@ This project implements a pixel-perfect revenue dashboard based on the provided 
 ```
 src/
 ├── components/
+│   ├── app/
+│   │   └── Quicklinks.tsx          # App Bar with quick access navigation links
 │   ├── layout/
-│   │   └── Header.tsx              # Main navigation header
+│   │   ├── Header/
+│   │   │   ├── Header.tsx          # Main navigation header
+│   │   │   └── _data.tsx           # Header navigation data
+│   ├── shared/
+│   │   └── DataTable.tsx           # Reusable data table component
 │   └── ui/                          # shadcn UI components
 │       ├── badge.tsx
 │       ├── button.tsx
+│       ├── calendar.tsx
+│       ├── date-picker.tsx
+│       ├── dropdown-menu.tsx
+│       ├── select-input.tsx
+│       ├── sheet.tsx
 │       ├── skeleton.tsx
+│       ├── table.tsx
 │       ├── tooltip.tsx
 │       └── ...
+├── hooks/
+│   ├── useCurrentUser.ts           # Hook for fetching current user data
+│   └── useDataExport.ts            # Hook for exporting data to CSV
 ├── pages/
 │   └── revenue/
 │       ├── components/
 │       │   ├── BalanceCard.tsx     # Reusable balance display card
-│       │   ├── RevenueChart.tsx    # Chart visualization component
-│       │   ├── TransactionsList.tsx # Transaction list with filters
-│       │   └── index.ts            # Component exports
+│       │   ├── FilterSheet.tsx     # Filter sidebar with date and type filters
+│       │   ├── RevenueChart.tsx    # Revenue trend chart visualization
+│       │   └── TransactionsList.tsx # Transaction list with filters
 │       ├── hooks/
-│       │   ├── useRevenueData.ts   # Custom hook for revenue data
-│       │   └── index.ts            # Hook exports
+│       │   ├── useMobile.ts        # Hook for responsive mobile detection
+│       │   ├── useRevenueData.ts   # Hook for revenue data management
+│       │   └── useTransactionFilters.ts # Hook for URL-based filter state
 │       └── Revenue.tsx             # Main revenue page
 ├── store/
 │   ├── api/
@@ -53,9 +69,17 @@ src/
 │   │       └── types.ts            # Wallet type definitions
 │   ├── index.ts                     # Store configuration
 │   └── types.ts                     # Shared API types
+├── utils/
+│   ├── dateRange.ts                # Date range utility functions
+│   ├── formatAmount.ts             # Currency formatting utilities
+│   ├── formatDate.ts               # Date formatting utilities
+│   └── getInitials.ts              # User initials extraction utility
+├── assets/
+│   ├── fonts/                       # Custom font files
+│   └── svgs/                        # SVG icons for quicklinks
 ├── App.tsx                          # Root application component
 ├── main.tsx                         # Application entry point
-└── index.css                        # Global styles and CSS variables
+└── index.css                        # Global styles and Tailwind config
 ```
 
 ## Features Implemented
@@ -63,31 +87,17 @@ src/
 ### 1. Header Component
 
 - ✅ Navigation bar with Home, Analytics, Revenue (active), CRM, and Apps
-- ✅ Logo/brand icon
-- ✅ Notification and document icons
-- ✅ User avatar with initials
+- ✅ User avatar with initials and dropdown options
 - ✅ Sticky header with backdrop blur
 - ✅ Responsive design with mobile menu toggle
 
 ### 2. Revenue Page
 
-- ✅ Available Balance card with withdraw button
-- ✅ Ledger Balance, Total Payout, Total Revenue, and Pending Payout cards
-- ✅ Revenue chart with date range (Apr 1 - Apr 30, 2022)
-- ✅ 24 Transactions list with:
-  - Transaction icons (deposit/withdrawal)
-  - Transaction details (name, product)
-  - Status badges (successful, pending, failed)
-  - Amount and date
-  - Filter and Export buttons
+- ✅ Available Balance and other data from integrated endpoints
+- ✅ Revenue chart with computed data from transactions
+- ✅ Transactions table with Filter and Export functionalities
 
-### 3. Components
-
-- ✅ **BalanceCard**: Reusable component for displaying monetary values with labels and tooltips
-- ✅ **RevenueChart**: Area chart using Recharts with custom styling to match design
-- ✅ **TransactionsList**: List component with transaction cards, status badges, and action buttons
-
-### 4. State Management & API Integration
+### 3. State Management & API Integration
 
 - ✅ RTK Query baseApi configured with endpoint injection
 - ✅ Three API endpoints integrated:
@@ -95,25 +105,22 @@ src/
   - `/wallet` - Wallet/balance data
   - `/transactions` - Transaction history
 - ✅ Custom hook `useRevenueData` for managing data fetching and chart data transformation
-- ✅ Loading states with skeleton components
+- ✅ Custom hook `useTransactionFilters` to manage filters in the URL params for persistence
+- ✅ Loading states with skeleton components that indicate expected layout
 - ✅ Error handling
 
 ## Design Highlights
 
 - **Pixel-perfect implementation** matching the provided mockup
 - **Responsive layout** that adapts to different screen sizes
-- **Modern UI** with clean spacing, borders, and hover effects
-- **Color-coded status badges** (green for successful, yellow for pending, red for failed)
-- **Custom chart styling** with gradient fills matching the brand orange (#FF5403)
-- **Smooth transitions** and hover states throughout
+- **Smooth transitions** and hover states
 
-## API Configuration
+## Code Quality
 
-Set the API base URL in your `.env` file:
-
-```
-VITE_API_BASE_URL=https://fe-task-api.mainstack.io
-```
+- ✅ Component-based architecture with reusable components
+- ✅ Code organization and separation of concerns
+- ✅ Custom hooks for data management
+- ✅ TypeScript with proper typing
 
 ## Running the Application
 
@@ -127,10 +134,3 @@ pnpm dev
 # Build for production
 pnpm build
 ```
-
-## Code Quality
-
-- ✅ Component-based architecture
-- ✅ Proper code organization and separation of concerns
-- ✅ Reusable components with proper prop typing
-- ✅ Custom hooks for data management
