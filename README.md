@@ -1,73 +1,136 @@
-# React + TypeScript + Vite
+# Mainstack FE Test - Revenue Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Implementation Summary
 
-Currently, two official plugins are available:
+This project implements a pixel-perfect revenue dashboard based on the provided design mockup. The application displays wallet balance information, revenue charts, and transaction history.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **React 19** with TypeScript
+- **Vite** (Rolldown) for build tooling
+- **Redux Toolkit** with RTK Query for state management and API calls
+- **Tailwind CSS** for styling
+- **shadcn/ui** for UI components
+- **Recharts** for data visualization
+- **Lucide React** for icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── layout/
+│   │   └── Header.tsx              # Main navigation header
+│   └── ui/                          # shadcn UI components
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── skeleton.tsx
+│       ├── tooltip.tsx
+│       └── ...
+├── pages/
+│   └── revenue/
+│       ├── components/
+│       │   ├── BalanceCard.tsx     # Reusable balance display card
+│       │   ├── RevenueChart.tsx    # Chart visualization component
+│       │   ├── TransactionsList.tsx # Transaction list with filters
+│       │   └── index.ts            # Component exports
+│       ├── hooks/
+│       │   ├── useRevenueData.ts   # Custom hook for revenue data
+│       │   └── index.ts            # Hook exports
+│       └── Revenue.tsx             # Main revenue page
+├── store/
+│   ├── api/
+│   │   └── baseApi.ts              # RTK Query base API configuration
+│   ├── app/
+│   │   ├── transactions/
+│   │   │   ├── api.ts              # Transactions API endpoints
+│   │   │   └── types.ts            # Transaction type definitions
+│   │   ├── user/
+│   │   │   ├── api.ts              # User API endpoints
+│   │   │   └── types.ts            # User type definitions
+│   │   └── wallet/
+│   │       ├── api.ts              # Wallet API endpoints
+│   │       └── types.ts            # Wallet type definitions
+│   ├── index.ts                     # Store configuration
+│   └── types.ts                     # Shared API types
+├── App.tsx                          # Root application component
+├── main.tsx                         # Application entry point
+└── index.css                        # Global styles and CSS variables
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features Implemented
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Header Component
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ✅ Navigation bar with Home, Analytics, Revenue (active), CRM, and Apps
+- ✅ Logo/brand icon
+- ✅ Notification and document icons
+- ✅ User avatar with initials
+- ✅ Sticky header with backdrop blur
+- ✅ Responsive design with mobile menu toggle
+
+### 2. Revenue Page
+
+- ✅ Available Balance card with withdraw button
+- ✅ Ledger Balance, Total Payout, Total Revenue, and Pending Payout cards
+- ✅ Revenue chart with date range (Apr 1 - Apr 30, 2022)
+- ✅ 24 Transactions list with:
+  - Transaction icons (deposit/withdrawal)
+  - Transaction details (name, product)
+  - Status badges (successful, pending, failed)
+  - Amount and date
+  - Filter and Export buttons
+
+### 3. Components
+
+- ✅ **BalanceCard**: Reusable component for displaying monetary values with labels and tooltips
+- ✅ **RevenueChart**: Area chart using Recharts with custom styling to match design
+- ✅ **TransactionsList**: List component with transaction cards, status badges, and action buttons
+
+### 4. State Management & API Integration
+
+- ✅ RTK Query baseApi configured with endpoint injection
+- ✅ Three API endpoints integrated:
+  - `/user` - User information
+  - `/wallet` - Wallet/balance data
+  - `/transactions` - Transaction history
+- ✅ Custom hook `useRevenueData` for managing data fetching and chart data transformation
+- ✅ Loading states with skeleton components
+- ✅ Error handling
+
+## Design Highlights
+
+- **Pixel-perfect implementation** matching the provided mockup
+- **Responsive layout** that adapts to different screen sizes
+- **Modern UI** with clean spacing, borders, and hover effects
+- **Color-coded status badges** (green for successful, yellow for pending, red for failed)
+- **Custom chart styling** with gradient fills matching the brand orange (#FF5403)
+- **Smooth transitions** and hover states throughout
+
+## API Configuration
+
+Set the API base URL in your `.env` file:
+
 ```
+VITE_API_BASE_URL=https://fe-task-api.mainstack.io
+```
+
+## Running the Application
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+```
+
+## Code Quality
+
+- ✅ Component-based architecture
+- ✅ Proper code organization and separation of concerns
+- ✅ Reusable components with proper prop typing
+- ✅ Custom hooks for data management
