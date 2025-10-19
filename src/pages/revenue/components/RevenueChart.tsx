@@ -1,4 +1,5 @@
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { useMobile } from "../hooks/useMobile";
 
 interface RevenueChartProps {
   data: Array<{ date: string; amount: number }>;
@@ -25,6 +26,7 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
           fill="#888"
           fontSize={12}
           textAnchor={payload.index === 0 ? "start" : "end"}
+          className="text-[10px] sm:text-xs"
         >
           {payload.value}
         </text>
@@ -32,13 +34,20 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
     );
   };
 
+  const { isMobile } = useMobile();
+
+  const chartMargins = isMobile
+    ? { top: 10, right: 40, left: 40, bottom: 0 }
+    : { top: 10, right: 36, left: 60, bottom: 0 };
+
+  const containerClass = isMobile
+    ? "h-[256px] w-full"
+    : "h-[256px] w-full -ml-[80px]";
+
   return (
-    <div className="h-[256px] w-full -ml-[80px]">
+    <div className={containerClass}>
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          data={data}
-          margin={{ top: 10, right: 40, left: 80, bottom: 0 }}
-        >
+        <AreaChart data={data} margin={chartMargins}>
           <defs>
             <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#FF5403" stopOpacity={0.1} />

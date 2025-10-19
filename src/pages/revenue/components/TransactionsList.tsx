@@ -60,10 +60,12 @@ export const TransactionsList = ({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold">{totalCount} Transactions</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="text-lg md:text-xl font-bold">
+            {totalCount} Transactions
+          </h2>
+          <p className="text-xs md:text-sm text-muted-foreground">
             {filters.datePreset
               ? filters.datePreset === "custom"
                 ? `Your transactions for ${formatDate(
@@ -78,16 +80,19 @@ export const TransactionsList = ({
         <div className="flex items-center gap-2">
           <button
             onClick={() => setFilterSheetOpen(true)}
-            className="flex items-center gap-2 p-2 px-6 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-4xl cursor-pointer"
+            className="flex items-center gap-2 p-2 px-4 md:px-6 text-xs md:text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-4xl cursor-pointer"
           >
             Filter
             <ChevronDown size={14} />
           </button>
           <button
             onClick={handleDownloadData}
-            className="flex items-center gap-2 p-2 px-6 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-4xl cursor-pointer"
+            className="flex items-center gap-2 p-2 px-4 md:px-6 text-xs md:text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-4xl cursor-pointer"
           >
-            {isExporting ? "Exporting..." : "Export list"}
+            <span className="hidden sm:inline">
+              {isExporting ? "Exporting..." : "Export list"}
+            </span>
+            <span className="sm:hidden">Export</span>
             <Download size={12} />
           </button>
         </div>
@@ -134,16 +139,18 @@ const columns: ColumnDef<Transaction>[] = [
 
       if (isWithdrawal) {
         return (
-          <div className="flex items-center gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F9E3E0]">
-              <MoveUpRight className="h-5 w-5 text-[#961100]" />
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#F9E3E0]">
+              <MoveUpRight className="h-4 w-4 md:h-5 md:w-5 text-[#961100]" />
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="font-medium">Cash Withdrawal</p>
+            <div className="flex flex-col gap-1 md:gap-2 min-w-0">
+              <p className="font-medium text-sm md:text-base truncate">
+                Cash Withdrawal
+              </p>
               <Badge
                 className={`${getStatusStyles(
                   status
-                )} bg-transparent border-0 p-0 font-medium capitalize`}
+                )} bg-transparent border-0 p-0 font-medium capitalize text-xs md:text-sm`}
               >
                 {status}
               </Badge>
@@ -153,16 +160,16 @@ const columns: ColumnDef<Transaction>[] = [
       }
 
       return (
-        <div className="flex items-center gap-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E3FCF2]">
-            <MoveDownLeft className="h-5 w-5 text-[#075132]" />
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#E3FCF2]">
+            <MoveDownLeft className="h-4 w-4 md:h-5 md:w-5 text-[#075132]" />
           </div>
-          <div className="flex flex-col gap-2">
-            <p className="font-medium">
+          <div className="flex flex-col gap-1 md:gap-2 min-w-0">
+            <p className="font-medium text-sm md:text-base truncate">
               {transaction.metadata?.product_name ||
                 startCase(transaction.metadata?.type)}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground truncate">
               {transaction.metadata?.name}
             </p>
           </div>
@@ -176,10 +183,10 @@ const columns: ColumnDef<Transaction>[] = [
       const transaction = row.original;
       return (
         <div className="text-right">
-          <p className="font-semibold">
+          <p className="font-semibold text-sm md:text-base">
             {formatAmountWithCurrency(transaction.amount)}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs md:text-sm text-muted-foreground">
             {formatDate(transaction.date)}
           </p>
         </div>

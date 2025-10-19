@@ -133,9 +133,14 @@ export const FilterSheet = ({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full sm:max-w-md py-4 px-6">
+      <SheetContent
+        side="right"
+        className="w-4/5 md:max-w-max py-4 px-4 sm:px-6"
+      >
         <SheetHeader className="flex flex-row items-center justify-between p-0">
-          <SheetTitle className="text-xl font-bold">Filter</SheetTitle>
+          <SheetTitle className="text-lg md:text-xl font-bold">
+            Filter
+          </SheetTitle>
           <SheetClose asChild>
             <Button variant="ghost" size="icon" className="cursor-pointer">
               <XIcon size={16} />
@@ -143,13 +148,13 @@ export const FilterSheet = ({
           </SheetClose>
         </SheetHeader>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-5 md:gap-6">
           <div className="flex flex-wrap gap-2">
             {datePresets.map((preset) => (
               <button
                 key={preset.value}
                 onClick={() => handleDatePresetChange(preset.value)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-colors ${
                   draftDatePreset === preset.value
                     ? "bg-black text-white"
                     : "bg-white text-black hover:bg-secondary/80 border border-muted"

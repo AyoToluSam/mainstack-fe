@@ -197,26 +197,28 @@ const DataTable = <T,>({
         </Table>
       </div>
       {showPagination && table.getRowModel().rows?.length > 0 && (
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="flex items-center gap-1 text-muted-foreground flex-1 text-sm">
-            Showing Page
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-2 py-4">
+          <div className="flex items-center gap-1 text-muted-foreground text-xs sm:text-sm">
+            <span className="hidden sm:inline">Showing Page</span>
+            <span className="sm:hidden">Page</span>
             <b>{table.getState().pagination.pageIndex + 1}</b>
             of <b>{table.getPageCount()}</b>
           </div>
-          <div className="space-x-2">
+          <div className="flex gap-2">
             <Button
               variant="outline"
               size="sm"
-              className="w-22"
+              className="text-xs sm:text-sm"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              Previous
+              <span className="hidden sm:inline">Previous</span>
+              <span className="sm:hidden">Prev</span>
             </Button>
             <Button
               variant="outline"
               size="sm"
-              className="w-22"
+              className="text-xs sm:text-sm"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >

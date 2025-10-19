@@ -3,6 +3,7 @@ import {
   MessageSquareText,
   TextAlignJustify,
   LogOut,
+  Menu,
 } from "lucide-react";
 import { MdNotificationsNone } from "react-icons/md";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../../ui/sheet";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { navItems, userMenuItems } from "./_data";
@@ -23,6 +31,7 @@ const Header = () => {
   const { user, userName, isUserLoading } = useCurrentUser();
 
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full pt-2.5 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -33,7 +42,43 @@ const Header = () => {
             "0px 1px 3px 0px rgba(45, 59, 67, 0.04), 0px 1px 2px 0px rgba(45, 59, 67, 0.06)",
         }}
       >
-        <img src="/logo.png" alt="Logo" className="w-8 ml-2" />
+        <div className="flex items-center gap-3">
+          <img src="/logo.png" alt="Logo" className="w-6 md:w-8 ml-2" />
+
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden text-muted-foreground hover:text-foreground"
+              >
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[280px] px-0">
+              <SheetHeader className="px-6 pb-4">
+                <SheetTitle className="text-left">Menu</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col">
+                {navItems.map((item) => (
+                  <button
+                    key={item.name}
+                    className={cn(
+                      "flex items-center gap-3 px-6 py-3 text-sm font-medium transition-colors",
+                      item.active
+                        ? "bg-black text-white"
+                        : "text-muted-foreground hover:bg-secondary"
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <item.icon className="h-4 w-4" />
+                    {item.name}
+                  </button>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
 
         <nav className="hidden md:flex items-center gap-4">
           {navItems.map((item) => {
@@ -113,20 +158,20 @@ const Header = () => {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <Button
             variant="ghost"
             size="icon"
-            className="relative text-muted-foreground hover:text-foreground"
+            className="relative text-muted-foreground hover:text-foreground h-8 w-8 md:h-10 md:w-10"
           >
-            <MdNotificationsNone className="h-5 w-5" />
+            <MdNotificationsNone className="h-4 w-4 md:h-5 md:w-5" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="relative text-muted-foreground hover:text-foreground"
+            className="relative text-muted-foreground hover:text-foreground h-8 w-8 md:h-10 md:w-10"
           >
-            <MessageSquareText className="h-5 w-5" />
+            <MessageSquareText className="h-4 w-4 md:h-5 md:w-5" />
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

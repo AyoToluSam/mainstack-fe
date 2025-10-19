@@ -27,14 +27,16 @@ export const BalanceCard = ({
 }: BalanceCardProps) => {
   return (
     <div className={cn("flex justify-between gap-2", className)}>
-      <div className="flex flex-col gap-2">
-        <span className="text-sm text-muted-foreground">{label}</span>
+      <div className="flex flex-col gap-1.5 md:gap-2 min-w-0">
+        <span className="text-xs md:text-sm text-muted-foreground">
+          {label}
+        </span>
         <h2
           className={cn(
-            "font-bold",
-            textSize === "sm" && "text-lg",
-            textSize === "md" && "text-[28px]",
-            textSize === "lg" && "text-[32px]"
+            "font-bold min-w-max",
+            textSize === "sm" && "text-base md:text-lg",
+            textSize === "md" && "text-lg md:text-[28px]",
+            textSize === "lg" && "text-xl md:text-[32px]"
           )}
         >
           {currency} {formatAmount(amount)}
@@ -44,7 +46,7 @@ export const BalanceCard = ({
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Info className="h-3.5 w-3.5 text-muted-foreground" />
+              <Info className="h-3 w-3 md:h-3.5 md:w-3.5 text-muted-foreground flex-shrink-0" />
             </TooltipTrigger>
             <TooltipContent>
               <p className="max-w-xs text-xs">{tooltip}</p>
