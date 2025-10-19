@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Thin.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Light.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Regular.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Medium.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -35,7 +35,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-SemiBold.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -43,7 +43,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Bold.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -51,7 +51,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-Black.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -59,7 +59,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-ThinItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-ThinItalic.woff2") format("woff2");
   font-weight: 100;
   font-style: italic;
   font-display: swap;
@@ -67,7 +67,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-LightItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -75,7 +75,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-RegularItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-RegularItalic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -83,7 +83,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-MediumItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-MediumItalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -91,7 +91,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-SemiBoldItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-SemiBoldItalic.woff2") format("woff2");
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -99,7 +99,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-BoldItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-BoldItalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -107,7 +107,7 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("./assets/fonts/DegularDisplay-BlackItalic.woff2") format("woff2");
+  src: url("/fonts/DegularDisplay-BlackItalic.woff2") format("woff2");
   font-weight: 900;
   font-style: italic;
   font-display: swap;

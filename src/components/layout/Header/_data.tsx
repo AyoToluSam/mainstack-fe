@@ -23,27 +23,27 @@ export const navItems = [
       {
         name: "Link in Bio",
         description: "Manage your Link in Bio",
-        iconUrl: "/src/assets/svgs/link_in_bio.svg",
+        iconUrl: "/svgs/link_in_bio.svg",
       },
       {
         name: "Store",
         description: "Manage your Store activities",
-        iconUrl: "/src/assets/svgs/store.svg",
+        iconUrl: "/svgs/store.svg",
       },
       {
         name: "Media Kit",
         description: "Manage your Media Kit",
-        iconUrl: "/src/assets/svgs/media_kit.svg",
+        iconUrl: "/svgs/media_kit.svg",
       },
       {
         name: "Invoicing",
         description: "Manage your Invoices",
-        iconUrl: "/src/assets/svgs/invoicing.svg",
+        iconUrl: "/svgs/invoicing.svg",
       },
       {
         name: "Bookings",
         description: "Manage your Bookings",
-        iconUrl: "/src/assets/svgs/bookings.svg",
+        iconUrl: "/svgs/bookings.svg",
       },
     ],
   },
@@ -53,31 +53,31 @@ export const userMenuItems = [
   {
     icon: Settings,
     label: "Settings",
-    onClick: () => console.log("Settings"),
+    onClick: () => {},
   },
   {
     icon: IoReceiptOutline,
     label: "Purchase History",
-    onClick: () => console.log("Purchase History"),
+    onClick: () => {},
   },
   {
     icon: MdOutlineCardGiftcard,
     label: "Refer and Earn",
-    onClick: () => console.log("Refer and Earn"),
+    onClick: () => {},
   },
   {
     icon: MdOutlineWidgets,
     label: "Integrations",
-    onClick: () => console.log("Integrations"),
+    onClick: () => {},
   },
   {
     icon: MdOutlineBugReport,
     label: "Report Bug",
-    onClick: () => console.log("Report Bug"),
+    onClick: () => {},
   },
   {
     icon: MdOutlineSwitchAccount,
     label: "Switch Account",
-    onClick: () => console.log("Switch Account"),
+    onClick: () => {},
   },
 ];

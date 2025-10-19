@@ -74,9 +74,6 @@ src/
 │   ├── formatAmount.ts             # Currency formatting utilities
 │   ├── formatDate.ts               # Date formatting utilities
 │   └── getInitials.ts              # User initials extraction utility
-├── assets/
-│   ├── fonts/                       # Custom font files
-│   └── svgs/                        # SVG icons for quicklinks
 ├── App.tsx                          # Root application component
 ├── main.tsx                         # Application entry point
 └── index.css                        # Global styles and Tailwind config

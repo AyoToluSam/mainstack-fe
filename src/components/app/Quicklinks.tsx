@@ -18,25 +18,25 @@ const quickLinks: QuickLink[] = [
     id: "link-in-bio",
     label: "Link in Bio",
     href: "#",
-    svgPath: "/src/assets/svgs/link_in_bio.svg",
+    svgPath: "/svgs/link_in_bio.svg",
   },
   {
     id: "store",
     label: "Store",
     href: "#",
-    svgPath: "/src/assets/svgs/store.svg",
+    svgPath: "/svgs/store.svg",
   },
   {
     id: "media-kit",
     label: "Media Kit",
     href: "#",
-    svgPath: "/src/assets/svgs/media_kit.svg",
+    svgPath: "/svgs/media_kit.svg",
   },
   {
     id: "invoicing",
     label: "Invoicing",
     href: "#",
-    svgPath: "/src/assets/svgs/invoicing.svg",
+    svgPath: "/svgs/invoicing.svg",
   },
 ];
 

@@ -112,7 +112,7 @@ const Header = () => {
                     {item.dropdownOptions.map((option) => (
                       <DropdownMenuItem
                         key={option.name}
-                        className="border border-transparent bg-transparent hover:border hover:border-muted rounded-xl cursor-pointer"
+                        className="!border !border-transparent !bg-transparent hover:!border hover:!border-muted rounded-xl cursor-pointer"
                       >
                         <span className="flex items-center justify-center p-2 border border-muted rounded-lg">
                           <img
